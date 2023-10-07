@@ -6,6 +6,19 @@ $quaternary-color: #FA9500;
 $font-stack: 'IBM Plex Sans' , sans-serif; 
 $paragraph-size: 1.5em;
 
+@mixin flexCenter($direction,$content,$align){
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $content;
+    align-items: $align;
+}
+
+@mixin buttonStyle {
+    button{
+    background: none;
+    border-style: none;
+    }
+}
 body{
     margin: 0px;
     padding: 0px;
@@ -18,8 +31,7 @@ background-color: $primary-color;
 nav{
  width: auto;
  height:100px;
- display: flex;
- justify-content: space-between;
+ @include flexCenter(row,space-between,center);
  color: $primary-text-color;
  padding: 15px;
  p {
@@ -29,10 +41,7 @@ nav{
  .icons { 
     display: flex;
     gap: 15px;
-    button{
-        background:none;
-        border-style: none;
-    }
+    @include buttonStyle;
   }
 }
 
@@ -41,12 +50,10 @@ article {
     color: $primary-text-color;
     padding-left: 45px;
     padding-right: 45px;
-    display: flex;
-    justify-content: space-between;
+    @include flexCenter(row,space-between ,center );
     padding-top: 70px;
         .impact-section {
-            display: flex;
-            flex-direction: column;
+           @include flexCenter(column,space-evenly ,flex-start );
             padding-top: 50px;
             gap: 25px;
         }
@@ -58,11 +65,11 @@ article {
         p{
             font-size: $paragraph-size;  
         }
+        @include buttonStyle;
         button{ 
             width: 12vw;
             padding: 20px;
             background-color: $quaternary-color;
-            border-style: none;
             border-radius: 35px;
             color: white;
             font-size: 1em;
@@ -89,11 +96,9 @@ section {
         padding-bottom: 60px;
     }
     .card-section {
-        display: flex;
+        @include flexCenter(row,space-evenly,center);
         width: auto;
         height: auto;
-        justify-content: center;
-        align-items: center;
         column-gap: 100px;
         row-gap: 80px;
         flex-wrap: wrap;
